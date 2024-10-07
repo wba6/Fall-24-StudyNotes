@@ -33,20 +33,6 @@
           }
         ],
         "currentTab": 1
-      },
-      {
-        "id": "70d460c69d7c8daf",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ceab63287a3ccce1",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -96,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "05826d856b313267",
@@ -175,8 +161,10 @@
   },
   "active": "624d91810cdfc4e1",
   "lastOpenFiles": [
-    "Welcome.md",
+    "Pasted image 20241007142654.png",
     "Database-managment/Exam 1 review.md",
+    "README.md",
+    "Welcome.md",
     "Database-managment"
   ]
 }

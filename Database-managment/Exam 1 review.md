@@ -110,9 +110,199 @@ CREATE TABLE <table_name> (<List of elements>);
 //Delete table
 DROP TABLE <table_name>;
 
-//Add a column
+//Add a column but not changing data
 ALTER TABLE <table_name> ADD <column_name> datatype;
 ```
 
 ### Elements of table declarations
 
+**Data types**
+- INT or INTEGER
+- REAL or FLOAT
+- CHAR(n) - fixed length n
+- VARCHAR(n) - variable length string up to n
+
+**Any** value can be **NULL** 
+
+**Declaring Keys** 
+- Tables can have at most one primary key
+- Can have more than one unique key
+- No attribute of PRIMARY KEY can ever be NULL
+- UNIQUE keys can have a NULL value
+
+**Example of creating a table with a primary key** 
+```
+CREATE TABLE Beers (
+	name CHAR(20) PRIMARY KEY,
+	manf CHAR(20)
+)
+```
+
+**Example of Multi-attribute Key**
+```
+CREATE TABLE Sells (
+	bar CHAR(20),
+	beer VARCHAR(20),
+	price REAL,
+	PRIMARY KEY (bar, beer)
+)
+```
+
+
+
+# Relational Algebra
+
+**Core Relational Algebra**
+- **Selection**: Picking certain rows
+- **Projection**: Picking certain columns
+- **Products and joins**: Composition of relations
+- **Renaming**: of relations and attributes
+- **Union, intersection and difference**: Usual set operations, but both operands must have the same relational schema.
+
+
+**Selection**:
+- Picks certain rows
+
+Example of selection:
+
+| bar   | beer   | price |
+|-------|--------|-------|
+| Joe's | Bud    | 2.50  |
+| Joe's | Miller | 2.75  |
+| Sue's | Bud    | 2.50  |
+| Sue's | Miller | 3.00  |
+
+JoeMenue := σ_bar="Joe's"(Sells)
+
+| bar   | beer   | price |
+|-------|--------|-------|
+| Joe's | Bud    | 2.50  |
+| Joe's | Miller | 2.75  |
+
+
+**Projection**:
+- Projects the current query to pick out certain columns
+- Eliminate duplicate tuples
+
+Example of projection
+
+| bar   | beer   | price |
+|-------|--------|-------|
+| Joe's | Bud    | 2.50  |
+| Joe's | Miller | 2.75  |
+| Sue's | Bud    | 2.50  |
+| Sue's | Miller | 3.00  |
+
+Prices := π_beer, price(Sells)
+
+| beer   | price |
+|--------|-------|
+| Bud    | 2.50  |
+| Miller | 2.75  |
+| Miller | 3.00  |
+
+**Product**:
+- Not often used
+- Pair each tuple from T1 with each tuple of T2
+
+Example of product 
+R1:
+
+| A | B |
+|---|---|
+| 1 | 2 |
+| 3 | 4 |
+
+R2:
+
+| B | C  |
+|---|----|
+| 5 | 6  |
+| 7 | 8  |
+| 9 | 10 |
+
+R3: (Result of R1 ⨯ R2)
+
+| A | R1.B | R2.B | C  |
+|---|------|------|----|
+| 1 | 2    | 5    | 6  |
+| 1 | 2    | 7    | 8  |
+| 1 | 2    | 9    | 10 |
+| 3 | 4    | 5    | 6  |
+| 3 | 4    | 7    | 8  |
+| 3 | 4    | 9    | 10 |
+
+**Theta-join** 
+- Take the product of R1 X R2 then apply selection to result
+- Often natural join would be a better choice 
+
+Example of Theta-join
+Sells:
+
+| bar   | beer   | price |
+|-------|--------|-------|
+| Joe's | Bud    | 2.50  |
+| Joe's | Miller | 2.75  |
+| Sue's | Bud    | 2.50  |
+| Sue's | Coors  | 3.00  |
+
+Bars:
+
+| name   | addr        |
+|--------|-------------|
+| Joe's  | Maple St.   |
+| Sue's  | River Rd.   |
+
+BarInfo := Sells ⨝ Bars
+*Join on Sells.bar = Bars.name*
+
+BarInfo:
+
+| bar   | beer   | price | name   | addr        |
+|-------|--------|-------|--------|-------------|
+| Joe's | Bud    | 2.50  | Joe's  | Maple St.   |
+| Joe's | Miller | 2.75  | Joe's  | Maple St.   |
+| Sue's | Bud    | 2.50  | Sue's  | River Rd.   |
+| Sue's | Coors  | 3.00  | Sue's  | River Rd.   |
+
+**Natural Join**:
+- Equating attributes of the same name
+- Projecting out one copy of each pair of equated attributes
+
+Example of natural join:
+Sells:
+
+| bar   | beer    | price |
+|-------|---------|-------|
+| Joe's | Bud     | 2.50  |
+| Joe's | Miller  | 2.75  |
+| Sue's | Bud     | 2.50  |
+| Sue's | Coors   | 3.00  |
+
+Bars:
+
+| bar    | addr        |
+|--------|-------------|
+| Joe's  | Maple St.   |
+| Sue's  | River Rd.   |
+
+BarInfo := Sells ⟕ Bars
+*Left outer join (⟕) between Sells and Bars*
+
+BarInfo:
+
+| bar   | beer    | price | addr        |
+|-------|---------|-------|-------------|
+| Joe's | Bud     | 2.50  | Maple St.   |
+| Joe's | Miller  | 2.75  | Maple St.   |
+| Sue's | Bud     | 2.50  | River Rd.   |
+| Sue's | Coors   | 3.00  | River Rd.   |
+
+**Theta join vs natural join** 
+The **natural join** (`R ⨝ S`) automatically joins two relations `R` and `S` by equating all attributes with the same name in both relations. It implicitly uses equality conditions for every pair of attributes with the same name, and it removes one copy of the duplicate attributes in the result.
+
+On the other hand, the **theta-join** (`R ⨝_C S`) allows for an explicit join condition `C` to be specified. In this case, the condition is `R.A = S.A` for each attribute `A` that appears in both `R` and `S`. While this might seem the same as a natural join, the key difference is that the theta-join does not automatically remove duplicate attributes. Both attributes `R.A` and `S.A` will appear in the result unless explicitly projected away.
+
+**Summary of Differences:**
+- **Natural Join (`R ⨝ S`)**: Implicitly joins on attributes with the same name, removes duplicates.
+- **Theta-Join (`R ⨝_C S`)**: Requires an explicit condition and does not remove duplicates unless specified.
