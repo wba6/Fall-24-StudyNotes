@@ -27,6 +27,7 @@
               "state": {
                 "file": "Database-managment/Exam 1 review.md",
                 "mode": "source",
+                "backlinks": false,
                 "source": false
               }
             }
@@ -82,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "05826d856b313267",
@@ -159,7 +161,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "624d91810cdfc4e1",
+  "active": "9ff8a2664b65a0e6",
   "lastOpenFiles": [
     "Pasted image 20241007142654.png",
     "Database-managment/Exam 1 review.md",
