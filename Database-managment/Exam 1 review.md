@@ -303,6 +303,43 @@ The **natural join** (`R ⨝ S`) automatically joins two relations `R` and `S` b
 
 On the other hand, the **theta-join** (`R ⨝_C S`) allows for an explicit join condition `C` to be specified. In this case, the condition is `R.A = S.A` for each attribute `A` that appears in both `R` and `S`. While this might seem the same as a natural join, the key difference is that the theta-join does not automatically remove duplicate attributes. Both attributes `R.A` and `S.A` will appear in the result unless explicitly projected away.
 
-**Summary of Differences:**
+Summary of Differences:
 - **Natural Join (`R ⨝ S`)**: Implicitly joins on attributes with the same name, removes duplicates.
 - **Theta-Join (`R ⨝_C S`)**: Requires an explicit condition and does not remove duplicates unless specified.
+
+**Renaming**
+- Renames a table and attribute 
+
+Example of Renaming
+Bars:
+
+| name   | addr        |
+|--------|-------------|
+| Joe's  | Maple St.   |
+| Sue's  | River Rd.   |
+
+R(bar, addr) := Bars
+
+R:
+
+| bar    | addr        |
+|--------|-------------|
+| Joe's  | Maple St.   |
+| Sue's  | River Rd.   |
+
+
+For **Union**, **Intersection**, and **difference** the schema of both sets must be the same
+
+**Precedence of relational operators:**
+1. [σ, π, ρ] (highest).
+2. [⨯, ⨝].
+3. ∩.
+4. [∪, −].
+
+### Relational Algebra vs SQL
+ - Relational Algebra treats relations as sets (ie duplicates will never occur)
+ - Duplicate elimination is explicit in SQL(Select Distinct)
+
+
+# SQL 
+
