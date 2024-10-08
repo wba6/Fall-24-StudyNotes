@@ -582,4 +582,6 @@ Data from the `Sells` table:
 - If there are no non-NULL values in a column, then the result of the aggregation is `NULL`
 
 ### Multi-Relational Queries
+- Distinguish attributes of the same name by `table_name.attribute_name`
 
+##### Joining two tables for a Query
