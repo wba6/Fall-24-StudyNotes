@@ -434,3 +434,152 @@ ALTER TABLE table_name
 	- `INSERT` a tuple or tuples
 	- `DELETE` a tuple or tuples
 	- `UPDATE` the value(s) of an existing tuple or tuples
+
+**Example of `INSERT`**
+```
+INSERT INTO Orders (order_id, order_date, customer_id, amount) VALUES (101, '2024-10-07', 1, 99.99);
+
+INSERT INTO Customers (customer_id, customer_name, email)
+VALUES 
+(2, 'Jane Smith', 'janesmith@example.com'),
+(3, 'Robert Brown', 'robertbrown@example.com');
+
+```
+
+If we don’t have values for all attributes, and then we want the system to fill in missing components with `NULL`
+
+**Example of `UPDATE`**
+```
+UPDATE table_name SET <list of attribute assignments> WHERE <condition on tuples>;
+
+UPDATE Students SET Major = ‘CS’ WHERE ID = ‘ab123’;
+
+UPDATE Customers SET email = 'john.doe@newmail.com' WHERE customer_id = 1;
+
+```
+
+
+**Example of `Deletion`**
+```
+DELETE FROM table_name WHERE <condition>;
+
+DELETE FROM Students WHERE Major = ‘CS’;
+
+//deletes all rows in a table
+DELETE FROM table_name;
+```
+
+### Select-From-Where statements
+- `SELECT` desired attributes
+- `FROM` one or more tables
+- `WHERE` condition about tuples of the tables
+
+**Steps to use**
+- Begin with the relation in the FROM clause.  
+- Apply the selection condition indicated by the WHERE clause.  
+- Apply the extended projection indicated by the SELECT clause.
+
+**Examples**
+```
+SELECT name FROM Beers WHERE manf = ’Anheuser-Busch’;
+
+//you can also select the whole row
+SELECT * FROM Beers WHERE manf = ’Anheuser-Busch’;
+
+//renames the attribute name as beer in result
+SELECT name AS beer, manf FROM Beers WHERE manf = ’Anheuser-Busch’;
+```
+
+
+**There are also more complex conditions for `WHERE` Clauses**
+- Boolean operators AND, OR, NOT.  
+- Comparisons =, <>, <, >, <=, >=.
+
+**Example**
+```
+SELECT price FROM Sells WHERE bar = ’Joe’’s’ AND beer = ’Bud’;
+```
+
+### Other SQL Query keywords
+##### **Like Keyword**
+- Attribute LIKE pattern 
+- Attribute NOT LIKE pattern
+- **Pattern** is a quoted string with `%` which means "any string" and `_` means "any character" 
+
+**Example of LIKE keyword**
+```
+SELECT name FROM Drinkers WHERE phone LIKE ’330 % ’;
+```
+
+##### **NULL Values**
+- Tuples in SQL relations can have NULL as a value for one or more components
+- Two main reasons
+	- Missing value : e.g., we know Joe’s Bar has some address, but we don’t know what it is.  
+	- Inapplicable : e.g., the value of attribute died for an alive person.
+- `NULL` in SQL is not a value
+
+**You cannot do** `where column_name = null`;, but you can `where column_name is null;` or `where column_name is not null;`
+
+##### **Distinct keyword**
+- Does not allow for duplicate results
+
+**Example of Distinct**
+```
+/* Without DISTINCT, each price would be listed as many times as there were bar/beer pairs at that price */
+SELECT DISTINCT price FROM Sells;
+```
+
+##### **Group by keyword**
+
+- You can follow a select-from-where expression by a `GROUP BY` and a list of attributes
+- The relation that results from the SELECT-FROM-WHERE  is grouped according to the values of all those attributes, and any aggregation is applied only within each group
+
+**Example of `Group by`**
+```
+SELECT beer, AVG(price) AS average FROM Sells GROUP BY beer;
+```
+
+**Explanation of example**
+
+Data from the `Sells` table:
+
+|bar|beer|price|
+|---|---|---|
+|Joe's|Bud|5.00|
+|Joe's|Heineken|7.00|
+|Manny's|Bud|6.00|
+|Manny's|Heineken|8.00|
+|Manny's|Miller|7.00|
+**Group 1 (Bud)**
+
+|bar|beer|price|
+|---|---|---|
+|Joe's|Bud|5.00|
+|Manny's|Bud|6.00|
+ **Group 2 (Heineken)**
+
+|bar|beer|price|
+|---|---|---|
+|Joe's|Heineken|7.00|
+|Manny's|Heineken|8.00|
+ **Group 3 (Miller)**
+
+|bar|beer|price|
+|---|---|---|
+|Manny's|Miller|7.00|
+
+
+#### Aggregations
+
+- `SUM`: Returns the total sum of a numeric column. It adds all the values together.
+- `AVG`: Calculates the average of a numeric column by dividing the sum by the number of values.
+- `COUNT`: Counts the number of rows that match a specified condition or the total number of non-null entries in a column.
+- `MIN`: Returns the smallest value from a specified column.
+- `MAX`: Returns the largest value from a specified column.
+
+**NULL’s Ignored in Aggregation** 
+-  `NULL` never contributes to a sum, average, or count, and can never be the minimum or maximum of a column
+- If there are no non-NULL values in a column, then the result of the aggregation is `NULL`
+
+### Multi-Relational Queries
+
