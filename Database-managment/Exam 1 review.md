@@ -584,4 +584,38 @@ Data from the `Sells` table:
 ### Multi-Relational Queries
 - Distinguish attributes of the same name by `table_name.attribute_name`
 
-##### Joining two tables for a Query
+#### Joining two tables for a Query
+
+##### 1. Inner Join
+
+An **inner join** returns only those records that have matching values in both tables. It discards rows that do not meet the join condition.
+
+**Syntax** 
+`SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;`
+
+##### 2. Natural Join
+
+A **natural join** is a type of inner join that automatically joins tables based on columns with the same name and data type in both tables. It eliminates the need to explicitly specify the condition.
+
+**Syntax** 
+`SELECT columns FROM table1 NATURAL JOIN table2;`
+
+##### 4. Theta Join
+
+A **theta join** is a join that uses a condition, typically with a comparison operator such as `=`, `<`, `>`, etc.
+
+**Syntax**
+`SELECT columns FROM table1 JOIN table2 ON condition;`
+
+##### 6. Self Join
+
+A **self join** is used to join a table with itself. This is useful for hierarchical data or finding relationships within the same table.
+
+**Syntax** 
+`SELECT A.columns, B.columns FROM table A JOIN table B ON A.column = B.column;`
+
+##### 7. Outer left/right  Join
+**information not filled in** 
+
+#### Subqueries
+
