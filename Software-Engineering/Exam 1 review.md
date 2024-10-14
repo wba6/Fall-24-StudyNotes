@@ -52,3 +52,40 @@
 - **Commit Messages**: Should be clear and describe the purpose of the changes made.
 - **Branches**: Branches are used to manage independent lines of development. Features, bug fixes, and experiments can be handled separately without affecting the main codebase.
 
+## Dumb Questions (Chapters 1-6)
+
+### Chapter 1: Great Software Development
+- **Q: Why is pleasing the customer important?**
+  - **A**: If the customer is unhappy, the software is considered a failure regardless of its technical quality. Happy customers lead to successful projects.
+- **Q: Can I just build what the customer asks for?**
+  - **A**: No, often customers don’t know exactly what they want or need. Developers must help clarify requirements and iterate based on feedback.
+
+### Chapter 2: Gathering Requirements
+- **Q: How do I know if I have all the requirements?**
+  - **A**: You likely won't have all the requirements upfront. Requirements evolve over time as customers see the product and provide feedback.
+- **Q: What if the customer keeps changing their mind?**
+  - **A**: Iterative development helps manage changing requirements by allowing flexibility and adjustments in each iteration.
+
+### Chapter 3: Project Planning
+- **Q: Why do we need to prioritize requirements?**
+  - **A**: Prioritizing ensures that the most important features are developed first, allowing for early feedback and ensuring key functionalities are delivered.
+- **Q: Can’t we just add more people to meet deadlines?**
+  - **A**: Adding more people can sometimes slow down progress due to the increased need for communication and integration.
+
+### Chapter 4: User Stories and Tasks
+- **Q: Why are user stories important?**
+  - **A**: User stories help capture what the customer needs in simple language, ensuring everyone on the team has a shared understanding of the feature.
+- **Q: What if a user story is too big?**
+  - **A**: Large user stories, also known as epics, should be broken down into smaller, more manageable stories that can be completed within an iteration.
+
+### Chapter 5: Good-Enough Design
+- **Q: Isn’t perfect design the goal?**
+  - **A**: Striving for perfect design can lead to delays and over-engineering. Good-enough design focuses on meeting requirements efficiently and evolving as needed.
+- **Q: How do I know if my design is good enough?**
+  - **A**: If the design solves the problem, meets requirements, and allows for future changes, it’s good enough.
+
+### Chapter 6: Version Control
+- **Q: Why do I need version control?**
+  - **A**: Version control helps manage changes, prevent data loss, and facilitate collaboration among team members.
+- **Q: What if two people change the same file?**
+  - **A**: Version control systems help merge changes and handle conflicts, ensuring everyone’s work is integrated properly.
