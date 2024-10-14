@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database-managment/Exam 1 review.md",
+                "file": "README.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "05826d856b313267",
@@ -100,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Database-managment/Exam 1 review.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Database-managment/Exam 1 review.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Database-managment/Exam 1 review.md"
+                "file": "README.md"
               }
             }
           }
@@ -161,12 +160,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9ff8a2664b65a0e6",
+  "active": "624d91810cdfc4e1",
   "lastOpenFiles": [
-    "Pasted image 20241007142654.png",
+    "Welcome.md",
     "Database-managment/Exam 1 review.md",
     "README.md",
-    "Welcome.md",
+    "Software-Engineering/Exam 1 review.md",
+    "Untitled",
+    "Software-Engineering",
+    "Pasted image 20241007142654.png",
     "Database-managment"
   ]
 }
