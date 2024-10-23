@@ -403,8 +403,9 @@ CREATE TABLE people (
 	first_name varchar(30) NOT NULL,
 	surname varchar(30) NOT NULL,
 	born numeric(4) NOT NULL,
-	died numeric(4)
-	CHECK (born > 1950)
+	died numeric(4),
+	country varchar(30),
+	CHECK (born > 1950),
 	foreign key (country) References countries(country_code)
 )
 ```
