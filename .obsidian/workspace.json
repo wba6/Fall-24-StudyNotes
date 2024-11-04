@@ -27,13 +27,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Software-Engineering/test cases.md",
+                "file": "Database-managment/Entity-Relationship Model.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "test cases"
+              "title": "Entity-Relationship Model"
             }
           }
         ],
@@ -180,9 +180,10 @@
   },
   "active": "624d91810cdfc4e1",
   "lastOpenFiles": [
-    "Software-Engineering/Exam 1 review.md",
-    "Software-Engineering/test cases.md",
     "Database-managment/Exam 1 review.md",
+    "Database-managment/Entity-Relationship Model.md",
+    "Software-Engineering/test cases.md",
+    "Software-Engineering/Exam 1 review.md",
     "README.md",
     "Welcome.md",
     "Untitled",
