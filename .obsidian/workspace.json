@@ -27,17 +27,45 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database-managment/Entity-Relationship Model.md",
+                "file": "Database-managment/Exam 1 review.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Entity-Relationship Model"
+              "title": "Exam 1 review"
+            }
+          },
+          {
+            "id": "df1aa5f38058cd6f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Database-managment/Constraints.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Constraints"
+            }
+          },
+          {
+            "id": "caecc9c277ae6520",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Database-managment/Design Theory for Relational Databases.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Design Theory for Relational Databases"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -178,8 +206,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "624d91810cdfc4e1",
+  "active": "caecc9c277ae6520",
   "lastOpenFiles": [
+    "Database-managment/Constraints.md",
+    "Database-managment/Design Theory for Relational Databases.md",
     "Database-managment/Exam 1 review.md",
     "Database-managment/Entity-Relationship Model.md",
     "Software-Engineering/test cases.md",
